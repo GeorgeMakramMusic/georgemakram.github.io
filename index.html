@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="ar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>جورج مكرم</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="جورج مكرم، ملحن وموزع ومؤلف موسيقى تصويرية من مصر. أستوديو بيانيست. George Makram, Egyptian composer, arranger and film-score composer.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
+<style>
+/* Layout: one column. Hero photo, then keyboard, then a ruled credits list, then a library grouped by genre.
+   Palette: nescafe latte grounds with a deep burgundy accent. */
+:root {
+  --bg: #F3E8DC;
+  --surface: #FBF5EE;
+  --fg: #2A1A16;
+  --muted: #6B5348;
+  --line: #DAC6B3;
+  --accent: #7A1F3D;
+  --accent-fg: #FFF6EE;
+  --coffee: #8B5A36;
+  --key-white: #FFF8F0;
+  --key-black: #2A1A16;
+  --f-display: 'Reem Kufi', 'Segoe UI', Tahoma, sans-serif;
+  --f-body: 'IBM Plex Sans Arabic', 'Segoe UI', Tahoma, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #1E1214; --surface: #2A191D; --fg: #F4E7DB; --muted: #C7B1A3; --line: #4A2D34;
+    --accent: #E08CA6; --accent-fg: #2A0F18; --coffee: #D3A67A; --key-white: #F4E7DB; --key-black: #0F0708;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #1E1214; --surface: #2A191D; --fg: #F4E7DB; --muted: #C7B1A3; --line: #4A2D34;
+  --accent: #E08CA6; --accent-fg: #2A0F18; --coffee: #D3A67A; --key-white: #F4E7DB; --key-black: #0F0708;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--f-body);
+  font-size: 17px;
+  line-height: 1.75;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.wrap { max-width: 960px; margin: 0 auto; display: flex; flex-direction: column; gap: 5rem; padding-block: 1.25rem 4rem; }
+
+/* top bar */
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5rem 1.5rem; padding-block: .5rem; }
+.bar b { font-family: var(--f-display); font-size: 1.15rem; font-weight: 600; }
+.bar nav { display: flex; flex-wrap: wrap; gap: .25rem 1.25rem; font-size: .95rem; color: var(--muted); }
+.bar nav a { text-decoration: none; }
+.bar nav a:hover { color: var(--accent); }
+
+/* hero */
+:root { --hero-bg: #4A0F25; --hero-bg2: #702038; --hero-fg: #FFF3E6; --hero-muted: #E9C9B8; --hero-accent: #F2C48D; --hero-btn-fg: #3A0B1C; --on-photo: #FFF3E6; }
+.hero { background: linear-gradient(140deg, var(--hero-bg), var(--hero-bg2)); color: var(--hero-fg); border-radius: 16px; padding: clamp(1.25rem, 4vw, 2.5rem); display: grid; grid-template-columns: minmax(0, 1fr); gap: 2rem; }
+@media (min-width: 860px) { .hero { grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr); align-items: center; } }
+.hero-text { display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.hero .kicker { color: var(--hero-accent); font-size: 1rem; font-weight: 500; letter-spacing: .02em; }
+.hero h1 { margin: 0; font-family: var(--f-display); font-weight: 700; font-size: clamp(3rem, 9vw, 5.5rem); line-height: 1.05; text-wrap: balance; }
+.hero .en { margin: 0; font-size: .85rem; letter-spacing: .32em; text-transform: uppercase; color: var(--hero-muted); direction: ltr; text-align: right; }
+.hero p.lead { margin: 0; font-size: 1.15rem; }
+.stats { list-style: none; margin: .25rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: .9rem; }
+.stats li { border-top: 2px solid var(--hero-accent); padding-top: .5rem; display: flex; flex-direction: column; min-width: 0; }
+.stats b { font-family: var(--f-display); font-size: 1.5rem; line-height: 1.25; }
+.stats span { font-size: .85rem; color: var(--hero-muted); line-height: 1.5; }
+.cta { display: flex; flex-wrap: wrap; gap: .75rem; }
+.btn { display: inline-block; padding: .7rem 1.4rem; border-radius: 6px; font-weight: 600; text-decoration: none; border: 2px solid var(--accent); }
+.btn.primary { background: var(--accent); color: var(--accent-fg); }
+.btn.ghost { color: var(--fg); border-color: var(--line); }
+.btn.ghost:hover { border-color: var(--accent); }
+.hero .btn.primary { background: var(--hero-accent); color: var(--hero-btn-fg); border-color: var(--hero-accent); }
+.hero .btn.ghost { color: var(--hero-fg); border-color: rgba(255, 243, 230, .4); }
+.collage { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-auto-rows: clamp(54px, 9.5vw, 88px); gap: 8px; min-width: 0; }
+.tile { position: relative; margin: 0; overflow: hidden; border-radius: 10px; background: #2A1018; }
+.tile img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
+.tile figcaption { position: absolute; inset: auto 0 0 0; padding: 1.4rem .6rem .45rem; font-size: .75rem; line-height: 1.3; color: var(--on-photo); background: linear-gradient(to top, rgba(20, 5, 10, .85), transparent); }
+.t1 { grid-column: span 6; grid-row: span 3; }
+.t2, .t3 { grid-column: span 3; grid-row: span 2; }
+.t4, .t5, .t6 { grid-column: span 2; grid-row: span 2; }
+@keyframes rise { from { transform: translateY(14px); } to { transform: none; } }
+.tile { animation: rise .7s ease-out both; }
+.t2 { animation-delay: .08s; } .t3 { animation-delay: .14s; } .t4 { animation-delay: .2s; } .t5 { animation-delay: .26s; } .t6 { animation-delay: .32s; }
+@media (prefers-reduced-motion: reduce) { .tile { animation: none; } }
+
+/* highlights */
+.hl-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+@media (max-width: 700px) { .hl-grid { grid-template-columns: minmax(0, 1fr); } }
+.hl { position: relative; overflow: hidden; border-radius: 14px; padding: 1.6rem; display: flex; flex-direction: column; gap: .6rem; background: var(--surface); border: 1px solid var(--line); min-width: 0; }
+.hl .idx { position: absolute; inset-block-start: -.4rem; inset-inline-end: 1rem; font-family: var(--f-display); font-size: 6.5rem; line-height: 1; color: var(--accent); opacity: .13; pointer-events: none; }
+.hl .tag { font-size: .85rem; color: var(--coffee); font-weight: 600; position: relative; }
+.hl h3 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.7rem; line-height: 1.25; position: relative; }
+.hl .by { margin: 0; color: var(--muted); }
+.hl .stat { align-self: flex-start; padding: .25rem .9rem; border-radius: 999px; background: var(--accent); color: var(--accent-fg); font-weight: 600; font-size: .95rem; }
+.hl p.d { margin: 0; color: var(--muted); }
+.hl .acts { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: auto; padding-top: .8rem; }
+.hl-feature { background: linear-gradient(140deg, var(--hero-bg), var(--hero-bg2)); color: var(--hero-fg); border-color: transparent; }
+.hl-feature .idx { color: var(--hero-accent); opacity: .22; }
+.hl-feature .tag { color: var(--hero-accent); }
+.hl-feature .by, .hl-feature p.d { color: var(--hero-muted); }
+.hl-feature .stat { background: var(--hero-accent); color: var(--hero-btn-fg); }
+.hl-feature .btn.primary { background: var(--hero-accent); color: var(--hero-btn-fg); border-color: var(--hero-accent); }
+.hl-feature .btn.ghost { color: var(--hero-fg); border-color: rgba(255, 243, 230, .4); }
+
+/* platforms */
+.plat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: .9rem; }
+.plat { display: flex; flex-direction: column; align-items: center; gap: .3rem; padding: 1.2rem .8rem; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); text-decoration: none; text-align: center; transition: transform .15s, border-color .15s; }
+.plat:hover { border-color: var(--accent); transform: translateY(-2px); }
+.plat .ico { display: flex; align-items: center; justify-content: center; height: 2.6rem; font-size: 2.4rem; line-height: 1; color: var(--accent); }
+.plat b { font-family: var(--f-display); font-size: 1.1rem; font-weight: 600; }
+.plat span.sub { font-size: .85rem; color: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .plat { transition: none; } }
+
+/* keyboard */
+.keys-wrap { display: flex; flex-direction: column; gap: .5rem; }
+.keys { position: relative; display: flex; height: clamp(96px, 20vw, 150px); direction: ltr; border: 2px solid var(--key-black); border-radius: 4px 4px 10px 10px; overflow: hidden; background: var(--key-black); gap: 1px; }
+.key { flex: 1 1 0; min-width: 0; padding: 0; border: 0; background: var(--key-white); cursor: pointer; border-radius: 0 0 6px 6px; transition: background .12s; }
+.key:active, .key.on { background: color-mix(in srgb, var(--accent) 30%, var(--key-white)); }
+.key.black { position: absolute; top: 0; width: 4.4%; height: 62%; transform: translateX(-50%); background: var(--key-black); z-index: 2; border-radius: 0 0 4px 4px; border: 1px solid var(--key-white); border-top: 0; }
+.key.black:active, .key.black.on { background: var(--accent); }
+.keys-hint { font-size: .85rem; color: var(--muted); }
+
+/* section heads */
+section { display: flex; flex-direction: column; gap: 1.5rem; }
+h2 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: clamp(1.8rem, 5vw, 2.4rem); line-height: 1.2; text-wrap: balance; }
+.sec-head { display: flex; flex-direction: column; gap: .35rem; }
+.sec-head p { margin: 0; color: var(--muted); max-width: 38em; }
+
+/* credits list */
+.works { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--fg); }
+.work { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .35rem 1.5rem; align-items: baseline; padding-block: 1.25rem; border-bottom: 1px solid var(--line); }
+.work h3 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.45rem; line-height: 1.3; }
+.work p { margin: 0; color: var(--muted); grid-column: 1; }
+.work .links { grid-column: 2; grid-row: 1 / span 2; display: flex; flex-direction: column; gap: .35rem; align-items: flex-end; }
+.work .links a { color: var(--accent); font-weight: 600; text-underline-offset: 4px; white-space: nowrap; }
+@media (max-width: 560px) {
+  .work { grid-template-columns: minmax(0, 1fr); }
+  .work .links { grid-column: 1; grid-row: auto; flex-direction: row; flex-wrap: wrap; gap: .25rem 1.25rem; align-items: flex-start; }
+}
+
+/* library */
+.chips { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chips a { padding: .35rem .95rem; border: 1px solid var(--line); border-radius: 999px; text-decoration: none; font-size: .95rem; background: var(--surface); }
+.chips a:hover { border-color: var(--accent); color: var(--accent); }
+.cat { display: flex; flex-direction: column; gap: .75rem; scroll-margin-top: 1rem; }
+.cat h3.cat-title { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.5rem; color: var(--accent); }
+.cat .works { border-top: 1px solid var(--line); }
+.cat .work { padding-block: .9rem; }
+.cat .work h3 { font-size: 1.15rem; }
+.cat .work p { font-size: .95rem; }
+.lib { display: flex; flex-direction: column; gap: 2.5rem; }
+
+/* awards + studio */
+.two { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 2.5rem; }
+.two > div { min-width: 0; display: flex; flex-direction: column; gap: 1rem; }
+.facts { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 1.1rem; }
+.facts li { padding-inline-start: 1rem; border-inline-start: 3px solid var(--accent); }
+.facts strong { display: block; font-family: var(--f-display); font-weight: 600; font-size: 1.15rem; }
+.facts span { color: var(--muted); }
+.facts span a { color: var(--accent); font-weight: 600; text-underline-offset: 4px; white-space: nowrap; }
+
+/* photos */
+.photos { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1.5rem; align-items: start; }
+.photos figure { margin: 0; display: flex; flex-direction: column; gap: .6rem; min-width: 0; }
+.photos img { display: block; width: 100%; height: auto; border-radius: 8px; background: var(--line); }
+.photos figcaption { color: var(--muted); font-size: .95rem; line-height: 1.6; }
+
+/* services */
+.services { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.services > div { background: var(--surface); padding: 1.4rem; min-width: 0; display: flex; flex-direction: column; gap: .4rem; }
+.services h3 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.25rem; }
+.services p { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.65; }
+
+/* listen + contact */
+.platforms { display: flex; flex-wrap: wrap; gap: .75rem; }
+.platforms a { padding: .6rem 1.2rem; border: 1px solid var(--line); border-radius: 6px; text-decoration: none; font-weight: 500; background: var(--surface); }
+.platforms a:hover { border-color: var(--accent); color: var(--accent); }
+.contact-box { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: clamp(1.25rem, 4vw, 2.25rem); display: flex; flex-direction: column; gap: 1rem; }
+.contact-box p { margin: 0; }
+.wa-num { font-family: var(--f-body); font-size: 1.3rem; font-weight: 600; direction: ltr; text-align: right; user-select: all; }
+footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line); padding-top: 1.25rem; }
+.judy { background: var(--accent); color: var(--accent-fg); border-radius: 12px; padding: clamp(1.5rem, 5vw, 3rem); display: flex; flex-direction: column; gap: 1.1rem; }
+.judy .eyebrow { font-size: .95rem; opacity: .85; }
+.judy h2 { font-size: clamp(2.6rem, 9vw, 4.5rem); line-height: 1.05; }
+.judy p { margin: 0; max-width: 34em; font-size: 1.15rem; }
+.judy .btn { align-self: flex-start; background: var(--accent-fg); color: var(--accent); border-color: var(--accent-fg); font-size: 1.1rem; padding: .85rem 1.8rem; margin-top: .5rem; }
+.intro { margin: 0; max-width: 38em; }
+.collab-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 1.25rem 2rem; list-style: none; margin: 0; padding: 0; }
+.collab-list li { min-width: 0; padding-inline-start: 1rem; border-inline-start: 3px solid var(--coffee); }
+.collab-list strong { display: block; font-family: var(--f-display); font-weight: 600; font-size: 1.15rem; }
+.collab-list span { color: var(--muted); }
+.judy { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 2rem; align-items: center; }
+.judy-text { display: flex; flex-direction: column; gap: 1.1rem; min-width: 0; }
+.judy-photo { margin: 0; }
+.judy-photo img { display: block; width: 100%; height: auto; border-radius: 10px; }
+@media (max-width: 700px) { .judy { grid-template-columns: minmax(0, 1fr); } .judy-photo { max-width: 320px; } }
+.photos.single { grid-template-columns: minmax(0, 520px); }
+.judy-photos { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.judy-photos .judy-photo:nth-child(2) img { aspect-ratio: 1 / 1; object-fit: cover; object-position: 50% 45%; }
+.judy-photo video { display: block; width: 100%; max-width: 300px; height: auto; aspect-ratio: 9 / 16; border-radius: 10px; background: #000; object-fit: cover; }
+.judy-photo figcaption { font-size: .85rem; opacity: .85; margin-top: .4rem; }
+.collab-rows { display: flex; flex-direction: column; border-top: 2px solid var(--fg); }
+.collab-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 300px); gap: 1rem 2rem; padding-block: 1.4rem; border-bottom: 1px solid var(--line); align-items: start; }
+.collab-row > div { min-width: 0; }
+.collab-row h3 { margin: 0; font-family: var(--f-display); font-weight: 600; font-size: 1.4rem; line-height: 1.3; }
+.collab-row p { margin: .25rem 0 0; color: var(--muted); }
+.collab-media { display: flex; flex-direction: column; gap: .6rem; }
+.collab-media figure { margin: 0; }
+.collab-media img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.media-link { display: flex; align-items: center; gap: .7rem; padding: .65rem .9rem; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); text-decoration: none; font-weight: 500; line-height: 1.45; }
+.media-link::before { content: ""; flex: none; width: 0; height: 0; border-left: 10px solid var(--accent); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
+.media-link:hover { border-color: var(--accent); color: var(--accent); }
+@media (max-width: 700px) { .collab-row { grid-template-columns: minmax(0, 1fr); } }
+[hidden] { display: none !important; }
+@media (prefers-reduced-motion: reduce) { .key { transition: none; } }
+</style>
+
+<div class="wrap" dir="rtl" lang="ar">
+
+  <header class="bar">
+    <b>جورج مكرم</b>
+    <nav aria-label="أقسام الصفحة">
+      <a href="#highlights">أبرز الأعمال</a>
+      <a href="#library">مكتبة الأعمال</a>
+      <a href="#influences">تأثّري</a>
+      <a href="#collab">تعاونات</a>
+      <a href="#photos">لقطات</a>
+      <a href="#services">خدماتي</a>
+      <a href="#contact">تواصل</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-text">
+      <div class="kicker">ملحن · موزع · مؤلف موسيقى تصويرية · عازف بيانو</div>
+      <h1>جورج مكرم</h1>
+      <p class="en">George Makram</p>
+      <p class="lead">موسيقى فيلم من بطولة محمد صبحي، ومهرجان وصل لحوالي 4 مليون مشاهدة، وترانيم بتوصل للقلب. كله من أستوديو بيانيست.</p>
+      <ul class="stats">
+        <li><b>4 مليون</b><span>مشاهدة تقريباً لمهرجان المال الحلال</span></li>
+        <li><b>10 سنين</b><span>شغل من داخل الأستوديو</span></li>
+        <li><b>محمد صبحي</b><span>موسيقى فيلم «مع حفظ الألقاب»</span></li>
+      </ul>
+      <div class="cta">
+        <a class="btn primary" href="#contact">تواصل معايا</a>
+        <a class="btn ghost" href="#highlights">اسمع أبرز أعمالي</a>
+      </div>
+    </div>
+    <div class="collage">
+        <figure class="tile t1"><img src="img/portrait.jpg" alt="جورج مكرم يعزف على بيانو جراند" style="object-position:80% center"><figcaption>على البيانو</figcaption></figure>
+        <figure class="tile t2"><img src="img/sobhy1.jpg" alt="جورج مكرم مع الفنان محمد صبحي" style="object-position:55% center"><figcaption>مع الفنان محمد صبحي</figcaption></figure>
+        <figure class="tile t3"><img src="img/academy.jpg" alt="جورج مكرم بعد حفلة أكاديمية الفنون" style="object-position:50% 20%"><figcaption>أكاديمية الفنون، أكتوبر 2026</figcaption></figure>
+        <figure class="tile t4"><img src="img/shah.jpg" alt="حفلة مع الفنانة شاهيناز" style="object-position:center"><figcaption>مع الفنانة شاهيناز</figcaption></figure>
+        <figure class="tile t5"><img src="img/studio1.jpg" alt="جورج مكرم داخل الأستوديو" style="object-position:center"><figcaption>داخل الأستوديو</figcaption></figure>
+        <figure class="tile t6"><img src="img/sobhy2.jpg" alt="لقاء مع محمد صبحي لتحضير أعمال موسيقية" style="object-position:50% 30%"><figcaption>تحضير الموسيقى مع محمد صبحي</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="keys-wrap">
+    <div class="keys" id="keys" role="group" aria-label="كيبورد تفاعلي"></div>
+    <span class="keys-hint">اضغط على المفاتيح وجرّب الصوت.</span>
+  </div>
+
+  <section id="highlights">
+    <div class="sec-head">
+      <h2>أبرز أعمالي</h2>
+      <p>أربع أعمال تبدأ منها.</p>
+    </div>
+    <div class="hl-grid">
+    <article class="hl ">
+      <span class="idx" aria-hidden="true">1</span>
+      <div class="tag">أغنية</div>
+      <h3>الكيادين</h3>
+      <p class="by">مع محمد البدر</p>
+      <p class="d">كلمات وألحان وتوزيع جورج مكرم.</p>
+      <div class="acts"><a class="btn primary" href="https://www.facebook.com/reel/1122103767035308" target="_blank" rel="noopener">شاهد على فيسبوك</a></div>
+    </article>
+    <article class="hl hl-feature">
+      <span class="idx" aria-hidden="true">2</span>
+      <div class="tag">مهرجان</div>
+      <h3>مهرجان المال الحلال</h3>
+      <div class="stat">حوالي 4 مليون مشاهدة</div>
+      <p class="d">متاح على يوتيوب وسبوتيفاي وأنغامي وباقي المنصات.</p>
+      <div class="acts"><a class="btn primary" href="https://youtu.be/fDA5jxxwcfs" target="_blank" rel="noopener">شاهد على يوتيوب</a><a class="btn ghost" href="https://open.spotify.com/artist/5OswCg52A85dG1LAXTcFAV" target="_blank" rel="noopener">على سبوتيفاي</a></div>
+    </article>
+    <article class="hl ">
+      <span class="idx" aria-hidden="true">3</span>
+      <div class="tag">عمل ديني</div>
+      <h3>تطلع الأب من السماء</h3>
+      <p class="d">عمل ديني من أعمال جورج مكرم.</p>
+      <div class="acts"><a class="btn primary" href="https://youtu.be/k0BgdSoQwsY" target="_blank" rel="noopener">شاهد على يوتيوب</a></div>
+    </article>
+    <article class="hl ">
+      <span class="idx" aria-hidden="true">4</span>
+      <div class="tag">موسيقى تصويرية</div>
+      <h3>Jesus Movie Soundtrack</h3>
+      <p class="d">إعادة توزيع موسيقى فيلم يسوع بتقنيات توزيع حديثة وبدون تدخل الذكاء الاصطناعي.</p>
+      <div class="acts"><a class="btn primary" href="https://youtu.be/SZU4LsXqK9Q" target="_blank" rel="noopener">شاهد على يوتيوب</a></div>
+    </article>
+    </div>
+  </section>
+
+  <section id="works">
+    <div class="sec-head">
+      <h2>أعمال مختارة</h2>
+      <p>أفلام وأغاني وتعاونات، كل عمل ليه لينك تشوفه أو تسمعه.</p>
+    </div>
+    <ul class="works">
+      <li class="work">
+        <h3>مع حفظ الألقاب</h3>
+        <p>الموسيقى التصويرية لفيلم الفنان الكبير محمد صبحي.</p>
+        <div class="links"><a href="https://www.facebook.com/mohamedsobhyofficial/videos/1653737765033997" target="_blank" rel="noopener">شاهد على فيسبوك</a></div>
+      </li>
+      <li class="work">
+        <h3>نادر</h3>
+        <p>الموسيقى التصويرية للفيلم الروائي المصري.</p>
+        <div class="links"><a href="https://www.facebook.com/61566918103072/videos/1282941669708354/" target="_blank" rel="noopener">شاهد التحضيرات</a></div>
+      </li>
+      <li class="work">
+        <h3>تعاون مع الحجة نبيلة بلبلة</h3>
+        <p>عزف معها في حفلات لايف في أكثر من مناسبة.</p>
+        <div class="links">
+          <a href="https://www.facebook.com/reel/25264561169911223" target="_blank" rel="noopener">العمل الأول</a>
+          <a href="https://www.facebook.com/reel/2274693410022059" target="_blank" rel="noopener">العمل الثاني</a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section id="judy">
+    <div class="judy">
+      <div class="judy-text">
+        <div class="eyebrow">مقطوعة من أب لابنته</div>
+        <h2>جودي</h2>
+        <p>من عشق جورج مكرم لابنته جودي، ومن بعد المسافة بينهما في فترة من الفترات، ألّف لها مقطوعة بتعبّر عن اشتياقه لها.</p>
+        <p>هي رسالة أب لابنته، قالها بالبيانو.</p>
+        <a class="btn" href="https://www.youtube.com/watch?v=p5OTfLKnRmw" target="_blank" rel="noopener">اسمع مقطوعة جودي</a>
+      </div>
+      <div class="judy-photos"><figure class="judy-photo"><img src="img/judy.jpg" alt="جورج مكرم مع ابنته جودي" loading="lazy"></figure>
+      <figure class="judy-photo"><video controls playsinline preload="metadata" poster="img/judy2.jpg" src="judy.mp4" aria-label="مقطع قصير لجورج مكرم وابنته جودي">المتصفح لا يدعم تشغيل الفيديو.</video><figcaption>مشهد من فيديو مصنوع بتقنيات الذكاء الاصطناعي.</figcaption></figure></div>
+    </div>
+  </section>
+
+  <section id="library">
+    <div class="sec-head">
+      <h2>مكتبة الأعمال</h2>
+      <p>كل الأعمال مقسمة حسب النوع. اختار اللي يهمك واسمعه على يوتيوب.</p>
+    </div>
+    <nav class="chips" aria-label="أنواع الأعمال">
+      <a href="#c-hymns">ترانيم ودينية</a>
+      <a href="#c-national">وطنية</a>
+      <a href="#c-romantic">رومانسية</a>
+      <a href="#c-gulf">خليجية</a>
+      <a href="#c-custom">مقطوعات مخصصة</a>
+      <a href="#c-bands">فرق وتعاونات</a>
+      <a href="#c-tv">لقاءات تلفزيونية</a>
+    </nav>
+
+    <div class="lib">
+      <div class="cat" id="c-hymns">
+        <h3 class="cat-title">ترانيم وأعمال دينية</h3>
+        <ul class="works">
+          <li class="work"><h3>إعادة توزيع موسيقى فيلم يسوع</h3><p>بتقنيات توزيع حديثة وبدون تدخل الذكاء الاصطناعي.</p><div class="links"><a href="https://www.youtube.com/watch?v=SZU4LsXqK9Q" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>أم النور يا جميلة</h3><p>ترنيمة.</p><div class="links"><a href="https://www.youtube.com/watch?v=qs-DWEmxKKA" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>قلبي ولساني يسبحان الثالوث</h3><p>إعادة إحياء موسيقي للحن.</p><div class="links"><a href="https://www.youtube.com/watch?v=r8JfUdouml0" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>صبرني يا رب</h3><p>ترنيمة بفكرة جديدة، وتعزية لكل من فقد عزيزاً.</p><div class="links"><a href="https://www.youtube.com/watch?v=AnGJ5C7awEY" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="c-national">
+        <h3 class="cat-title">أغاني وطنية</h3>
+        <ul class="works">
+          <li class="work"><h3>بلد الأبطال</h3><p>المركز الثاني مناصفة في مسابقة «أنا المصري» بوزارة الثقافة. ألحان وتوزيع جورج مكرم.</p><div class="links"><a href="https://www.youtube.com/watch?v=WL1RWN_srvE" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>أغنية للرئيس عبد الفتاح السيسي</h3><p>أغنية وطنية.</p><div class="links"><a href="https://www.youtube.com/watch?v=be-RxC3RkBQ" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="c-romantic">
+        <h3 class="cat-title">أغاني رومانسية</h3>
+        <ul class="works">
+          <li class="work"><h3>بنلف</h3><p>من كلمات وألحان بليغ حمدي، توزيع جورج مكرم، بصوت نرمين أحمد «نيرما».</p><div class="links"><a href="https://www.youtube.com/watch?v=o5mzhj_l9mQ" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>نرقص</h3><p>أغنية رومانسية.</p><div class="links"><a href="https://www.youtube.com/watch?v=MhSCc0Q4r9M" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="c-gulf">
+        <h3 class="cat-title">أعمال خليجية</h3>
+        <ul class="works">
+          <li class="work"><h3>نفتخر في مملكتنا</h3><p>أغنية اليوم الوطني السعودي 2025.</p><div class="links"><a href="https://www.youtube.com/watch?v=V-VxO-udvdI" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>براحتك يا مسكين</h3><p>أغنية خليجية.</p><div class="links"><a href="https://www.youtube.com/watch?v=Uq33KDNN-mo" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>كلمة أخيرة</h3><p>أغنية خليجية.</p><div class="links"><a href="https://www.youtube.com/watch?v=00dr0hnMLEQ" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="c-custom">
+        <h3 class="cat-title">مقطوعات وأعمال موسيقية مخصصة</h3>
+        <ul class="works">
+          <li class="work"><h3>Revolution of Christ Incarnation</h3><p>The Birth of Light. موسيقى مسيحية، تأليف جورج مكرم.</p><div class="links"><a href="https://www.youtube.com/watch?v=l7KfOURe47M" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>Vintage New Believer</h3><p>مقطوعة ديسكو من تأليف جورج مكرم.</p><div class="links"><a href="https://www.youtube.com/watch?v=MtYEJMpMR98" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>احتواء</h3><p>مقطوعة موسيقية للبيانو والكمان، تأليف جورج مكرم.</p><div class="links"><a href="https://youtu.be/up3Xfq_aj58" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>Dreams &amp; Darkness</h3><p>مقطوعة موسيقية من تأليف جورج مكرم.</p><div class="links"><a href="https://www.youtube.com/watch?v=yXECamwF38Y" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="c-bands">
+        <h3 class="cat-title">تعاون مع فرق غنائية</h3>
+        <ul class="works">
+          <li class="work"><h3>مع فرقة موسيقية غربية</h3><p>مقطع من التعاون.</p><div class="links"><a href="https://www.youtube.com/shorts/lEyQad_2cyI" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>قيادة فرقة الفنان محمد البدر</h3><p>قيادة موسيقية للفرقة.</p><div class="links"><a href="https://www.youtube.com/shorts/_GHIb_gQdwE" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+
+      <div class="cat" id="c-tv">
+        <h3 class="cat-title">لقاءات تلفزيونية</h3>
+        <ul class="works">
+          <li class="work"><h3>برنامج صباح دريم</h3><p>لقاء تلفزيوني.</p><div class="links"><a href="https://www.youtube.com/watch?v=P2ulSvWwcQs" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>برنامج البداية</h3><p>لقاء تلفزيوني.</p><div class="links"><a href="https://www.youtube.com/watch?v=jOotaOkeS0Q" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>سهرة رأس السنة</h3><p>لقاء تلفزيوني.</p><div class="links"><a href="https://www.youtube.com/watch?v=Rt9vcRN9eQg" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="influences">
+    <div class="sec-head">
+      <h2>تأثّري الموسيقي</h2>
+      <p class="intro">من أكتر الأسماء اللي أثّرت فيا الموسيقار المصري عمر خيرت، والموسيقار الفرنسي بول موريات (Paul Mauriat). بسمع موسيقاهم وبعزفها، وده بعض اللي عزفته.</p>
+    </div>
+    <div class="lib">
+      <div class="cat">
+        <h3 class="cat-title">بول موريات (Paul Mauriat)</h3>
+        <ul class="works">
+          <li class="work"><h3>Minuetto</h3><p>عزف جورج مكرم، من موسيقى Paul Mauriat.</p><div class="links"><a href="https://www.youtube.com/watch?v=6ZS9205uH0s" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+      <div class="cat">
+        <h3 class="cat-title">عمر خيرت</h3>
+        <ul class="works">
+          <li class="work"><h3>الخادمة</h3><p>عزف جورج مكرم، من موسيقى عمر خيرت.</p><div class="links"><a href="https://www.youtube.com/watch?v=7bufON_y1r8" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>فيها حاجة حلوة</h3><p>عزف جورج مكرم، من موسيقى عمر خيرت (مقطع قصير).</p><div class="links"><a href="https://www.youtube.com/shorts/bncm7vU0eVs" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>ليلة القبض على فاطمة</h3><p>عزف جورج مكرم، من موسيقى عمر خيرت.</p><div class="links"><a href="https://www.youtube.com/watch?v=mAptwcZfijE" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work"><h3>رابسودية عربية</h3><p>عزف جورج مكرم، من موسيقى عمر خيرت.</p><div class="links"><a href="https://www.youtube.com/watch?v=ceaT8Vl_CZA" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="two">
+      <div>
+        <h2>جوائز وتكريمات</h2>
+        <ul class="facts">
+          <li><strong>مسابقة "أنا المصري" للأغنية الوطنية</strong><span>المركز الثاني مناصفة عن ملحمة "بلد الأبطال"، تلحين وتوزيع جورج مكرم، في مسابقة وزارة الثقافة المصرية. <a href="https://www.elwatannews.com/news/details/6081406" target="_blank" rel="noopener">اقرأ الخبر في جريدة الوطن</a></span></li>
+          <li><strong>مهرجان الكرازة المرقسية</strong><span>جوائز في العزف وفي التأليف الموسيقي.</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2>أستوديو بيانيست</h2>
+        <ul class="facts">
+          <li><strong>Pianist Studio</strong><span>أستوديو لإنتاج وتسجيل الأعمال الموسيقية والمرئية.</span></li>
+          <li><strong>الصفحة الرسمية للأستوديو</strong><span>فيها تقريباً كل الأعمال اللي اتعملت من داخل الأستوديو على مدار حوالي 10 سنين. <a href="https://www.facebook.com/PIANIST.AUDIO" target="_blank" rel="noopener">Pianist Audio على فيسبوك</a></span></li>
+          <li><strong>على المسرح</strong><span>عزف وقيادة موسيقية على مسرح سيد درويش بأكاديمية الفنون، مع فرقة وتريات الفنان أندرو عاطف.</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="collab">
+    <div class="sec-head">
+      <h2>تعاونات</h2>
+      <p class="intro">اشتغل جورج مكرم مع فنانين من مصر والسعودية، وبيحضّر لتعاونات جديدة مع أسماء كبيرة.</p>
+    </div>
+    <div class="collab-rows">
+      <div class="collab-row">
+        <div><h3>محمد البدر</h3><p>المؤلف والملحن المصري السعودي.</p></div>
+        <div class="collab-media"><a class="media-link" href="https://www.youtube.com/watch?v=Uq33KDNN-mo" target="_blank" rel="noopener">أغنية براحتك يا مسكين</a><a class="media-link" href="https://www.youtube.com/shorts/_GHIb_gQdwE" target="_blank" rel="noopener">قيادة فرقة الفنان محمد البدر</a></div>
+      </div>
+      <div class="collab-row">
+        <div><h3>عادل الخميس</h3><p>الفنان السعودي.</p></div>
+        <div class="collab-media"><a class="media-link" href="https://www.facebook.com/reel/914212107662989" target="_blank" rel="noopener">عادل الخميس يتحدث عن تعاوناته معي</a><a class="media-link" href="https://www.facebook.com/reel/1321078929982916" target="_blank" rel="noopener">عادل الخميس يتحدث عن جورج مكرم</a></div>
+      </div>
+      <div class="collab-row">
+        <div><h3>الحجة نبيلة بلبلة الشرقية</h3><p>عزف معها في حفلات لايف في أكثر من مناسبة.</p></div>
+        <div class="collab-media"><a class="media-link" href="https://www.facebook.com/reel/25264561169911223" target="_blank" rel="noopener">شاهد المقطع الأول</a><a class="media-link" href="https://www.facebook.com/reel/2274693410022059" target="_blank" rel="noopener">شاهد المقطع الثاني</a></div>
+      </div>
+      <div class="collab-row">
+        <div><h3>الفنانة شاهيناز</h3><p>اشتغل معها في حفلة.</p></div>
+        <div class="collab-media"><figure><img src="img/shah.jpg" alt="حفلة مع الفنانة شاهيناز" loading="lazy"></figure></div>
+      </div>
+      <div class="collab-row">
+        <div><h3>الفنان خالد بيومي</h3><p>وزّع له أغاني وعزف معه لايف.</p></div>
+        <div class="collab-media"><a class="media-link" href="https://www.facebook.com/reel/2054113615128912" target="_blank" rel="noopener">خالد بيومي يتحدث عن تعاوناته مع جورج مكرم</a></div>
+      </div>
+      <div class="collab-row">
+        <div><h3>الفنان أبو الليف</h3><p>يحضّر لتعاون معه.</p></div>
+        <div class="collab-media"><a class="media-link" href="https://www.facebook.com/reel/4743371452549366" target="_blank" rel="noopener">أبو الليف يتحدث عن الموزع جورج مكرم</a></div>
+      </div>
+      <div class="collab-row">
+        <div><h3>محسن الشبراوي ومحمود فايد</h3><p>الشاعر محسن الشبراوي، والمطرب محمود فايد، وفرق ترنيم معروفة.</p></div>
+        <div class="collab-media"><a class="media-link" href="#c-hymns" target="_blank" rel="noopener">اسمع الترانيم في مكتبة الأعمال</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="photos">
+    <div class="sec-head">
+      <h2>لقطات</h2>
+      <p>من الحفلات واللقاءات.</p>
+    </div>
+    <div class="photos">
+      <figure>
+        <img src="img/sawy.jpg" alt="جورج مكرم على الكيبورد خلف مطربة على المسرح" loading="lazy">
+        <figcaption>حفلة ساقية الصاوي، عزف لايف خلف مطربة مصرية.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/sobhy1.jpg" alt="جورج مكرم مع الفنان محمد صبحي في مكتبه" loading="lazy">
+        <figcaption>مع الفنان محمد صبحي في مكتبه بمدينة سنبل بعد عرض مسرحيته.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/sobhy2.jpg" alt="جورج مكرم مع الفنان محمد صبحي في أول لقاء لتحضير أعمال موسيقية" loading="lazy">
+        <figcaption>مع الفنان محمد صبحي في مكتبه بمدينة سنبل يوم 24-12-2023، اللقاء الأول لتحضير أعمال موسيقية للأستاذ محمد.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/academy.jpg" alt="جورج مكرم بعد حفلة أكاديمية الفنون" loading="lazy">
+        <figcaption>بعد حفلة أكاديمية الفنون في أكتوبر 2026، عازف البيانو مع أوركسترا الكمانجات.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/studio1.jpg" alt="جورج مكرم داخل الأستوديو" loading="lazy">
+        <figcaption>داخل الأستوديو.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/studio2.jpg" alt="جورج مكرم في غرفة التحكم بالأستوديو" loading="lazy">
+        <figcaption>داخل الأستوديو.</figcaption>
+      </figure>
+      <figure>
+        <img src="img/zamalek.jpg" alt="جورج مكرم أثناء تصويره في قناة نادي الزمالك" loading="lazy">
+        <figcaption>أثناء تصويري في قناة نادي الزمالك.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="sec-head">
+      <h2>إيه اللي أقدر أعمله لك</h2>
+      <p>قولي فكرتك وأنا أحدد معاك المطلوب والمدة والسعر.</p>
+    </div>
+    <div class="services">
+      <div><h3>توزيع موسيقي</h3><p>أغاني عاطفية ووطنية وترانيم، بتوزيع يطلع الأغنية بأحسن شكل.</p></div>
+      <div><h3>تلحين وتأليف</h3><p>ألحان جديدة لكلماتك أو لعملك الفني.</p></div>
+      <div><h3>موسيقى تصويرية</h3><p>للأفلام والمسرح والأعمال الدرامية.</p></div>
+      <div><h3>تسجيل وهندسة صوت</h3><p>تسجيل في الأستوديو ومعالجة الصوت لحد النسخة النهائية.</p></div>
+      <div><h3>مونتاج وكليبات</h3><p>تصوير ومونتاج وإخراج كليبات، وتقنيات الذكاء الاصطناعي في الأعمال الحديثة.</p></div>
+      <div><h3>عزف بيانو وكيبورد</h3><p>تسجيل عزف لأغنيتك، وقيادة موسيقية في الحفلات.</p></div>
+    </div>
+  </section>
+
+  <section id="listen">
+    <div class="sec-head">
+      <h2>استمع لأعمالي</h2>
+      <p>اضغط على أيقونة المنصة وهتفتح بروفايلي هناك.</p>
+    </div>
+    <div class="plat-grid">
+      <a class="plat" href="https://open.spotify.com/artist/5OswCg52A85dG1LAXTcFAV" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-spotify" aria-hidden="true"></i></span><b>Spotify</b><span class="sub">افتح بروفايلي</span></a>
+      <a class="plat" href="https://music.apple.com/us/artist/george-makram/1707356011" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-apple" aria-hidden="true"></i></span><b>Apple Music</b><span class="sub">افتح بروفايلي</span></a>
+      <a class="plat" href="https://www.youtube.com/channel/UC4-V5vS6WxonatIihbfuvHw" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-youtube" aria-hidden="true"></i></span><b>YouTube</b><span class="sub">قناتي الرسمية</span></a>
+      <a class="plat" href="https://soundcloud.com/george-makram" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-soundcloud" aria-hidden="true"></i></span><b>SoundCloud</b><span class="sub">افتح بروفايلي</span></a>
+      <a class="plat" href="https://www.facebook.com/GeorgeLovesGod" target="_blank" rel="noopener"><span class="ico"><i class="fa-brands fa-facebook" aria-hidden="true"></i></span><b>Facebook</b><span class="sub">صفحتي</span></a>
+      <a class="plat" href="https://www.facebook.com/PIANIST.AUDIO" target="_blank" rel="noopener"><span class="ico"><i class="fa-solid fa-headphones" aria-hidden="true"></i></span><b>Pianist Audio</b><span class="sub">صفحة الأستوديو</span></a>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="contact-box">
+      <h2>عندك عمل محتاج توزيع؟</h2>
+      <p>ابعتلي فكرتك أو الأغنية اللي عايز تشتغل عليها، وهرد عليك بالتفاصيل.</p>
+      <p class="wa-num" id="wa-num" hidden></p>
+      <div class="cta">
+        <a class="btn primary" id="wa-btn" href="#" target="_blank" rel="noopener" hidden>كلمني على واتساب</a>
+        <a class="btn ghost" href="https://www.facebook.com/GeorgeLovesGod" target="_blank" rel="noopener">راسلني على فيسبوك</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>© جورج مكرم · Pianist Studio · George Makram, Egyptian composer and arranger</footer>
+</div>
+
+<script>
+  // WhatsApp number in international format without plus or spaces.
+  var WHATSAPP = "201554117867";
+
+  (function () {
+    if (WHATSAPP) {
+      var b = document.getElementById("wa-btn"), n = document.getElementById("wa-num");
+      b.href = "https://wa.me/" + WHATSAPP; b.hidden = false;
+      n.textContent = "+" + WHATSAPP; n.hidden = false;
+    }
+
+    var box = document.getElementById("keys");
+    var whites = [0, 2, 4, 5, 7, 9, 11], total = 14, ctx = null;
+    var base = 261.63; // middle C
+
+    function play(semi, el) {
+      try {
+        ctx = ctx || new (window.AudioContext || window.webkitAudioContext)();
+        if (ctx.state === "suspended") ctx.resume();
+        var f = base * Math.pow(2, semi / 12), t = ctx.currentTime;
+        var o1 = ctx.createOscillator(), o2 = ctx.createOscillator(), g = ctx.createGain();
+        o1.type = "triangle"; o2.type = "sine";
+        o1.frequency.value = f; o2.frequency.value = f * 2;
+        g.gain.setValueAtTime(0.0001, t);
+        g.gain.exponentialRampToValueAtTime(0.35, t + 0.01);
+        g.gain.exponentialRampToValueAtTime(0.0001, t + 1.6);
+        o1.connect(g); o2.connect(g); g.connect(ctx.destination);
+        o1.start(t); o2.start(t); o1.stop(t + 1.7); o2.stop(t + 1.7);
+      } catch (e) {}
+      el.classList.add("on");
+      setTimeout(function () { el.classList.remove("on"); }, 180);
+    }
+
+    function make(semi, cls, label, left) {
+      var k = document.createElement("button");
+      k.type = "button"; k.className = "key " + cls; k.setAttribute("aria-label", label);
+      if (left != null) k.style.left = left + "%";
+      k.addEventListener("click", function () { play(semi, k); });
+      box.appendChild(k);
+    }
+
+    var names = ["دو", "ري", "مي", "فا", "صول", "لا", "سي"];
+    for (var i = 0; i < total; i++) {
+      var semi = Math.floor(i / 7) * 12 + whites[i % 7];
+      make(semi, "white", "نغمة " + names[i % 7], null);
+    }
+    for (var j = 0; j < total - 1; j++) {
+      if ([0, 1, 3, 4, 5].indexOf(j % 7) > -1) {
+        var s = Math.floor(j / 7) * 12 + whites[j % 7] + 1;
+        make(s, "black", "نغمة " + names[j % 7] + " دييز", ((j + 1) / total) * 100);
+      }
+    }
+  })();
+</script>
+
+</html>
