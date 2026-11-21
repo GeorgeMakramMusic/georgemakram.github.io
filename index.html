@@ -8,7 +8,8 @@
 <meta name="description" content="جورج مكرم، ملحن وموزع ومؤلف موسيقى تصويرية من مصر. أستوديو بيانيست. George Makram, Egyptian composer, arranger and film-score composer.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap">
+<link id="gf" rel="stylesheet" media="print" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Reem+Kufi:wght@500;600;700&display=swap"></noscript>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" defer></script>
 <style>
 /* Layout: one column. Hero photo, then keyboard, then a ruled credits list, then a library grouped by genre.
@@ -222,8 +223,67 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
 .media-link::before { content: ""; flex: none; width: 0; height: 0; border-left: 10px solid var(--accent); border-top: 6px solid transparent; border-bottom: 6px solid transparent; }
 .media-link:hover { border-color: var(--accent); color: var(--accent); }
 @media (max-width: 700px) { .collab-row { grid-template-columns: minmax(0, 1fr); } }
+/* gallery */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 200px), 1fr)); gap: 1.4rem 1rem; align-items: start; }
+@media (min-width: 640px) { .gallery .feature { grid-column: span 2; } }
+.gallery figure { margin: 0; display: flex; flex-direction: column; gap: .5rem; min-width: 0; }
+.g-btn { display: block; width: 100%; padding: 0; border: 0; background: var(--line); border-radius: 8px; overflow: hidden; cursor: zoom-in; }
+.g-btn img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .25s; }
+.g-btn:hover img { transform: scale(1.03); }
+.gallery figcaption { color: var(--muted); font-size: .92rem; line-height: 1.55; }
+.feature figcaption { font-size: 1rem; color: var(--fg); }
+.lb { position: fixed; inset: 0; z-index: 50; background: rgba(12, 4, 8, .93); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .8rem; padding: 3.2rem 1rem 1.2rem; }
+.lb img { max-width: 100%; max-height: 78vh; width: auto; height: auto; border-radius: 6px; }
+.lb p { margin: 0; max-width: 40em; text-align: center; color: var(--on-photo); line-height: 1.6; }
+.lb-close { position: absolute; top: 12px; inset-inline-start: 14px; width: 44px; height: 44px; border-radius: 50%; border: 1px solid rgba(255, 243, 230, .5); background: transparent; color: var(--on-photo); font-size: 1.6rem; line-height: 1; cursor: pointer; }
+@media (prefers-reduced-motion: reduce) { .g-btn img { transition: none; } }
+.cat-photo { margin: 0 0 .5rem; max-width: 460px; }
+.cat-photo img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.cat-photo figcaption { color: var(--muted); font-size: .9rem; margin-top: .4rem; }
+.work-video { grid-template-columns: minmax(0, 1fr); }
+.work-video video { display: block; width: 100%; max-width: 480px; height: auto; aspect-ratio: 400 / 260; border-radius: 8px; background: #000; margin-top: .5rem; }
+.bio { display: grid; grid-template-columns: minmax(0, 320px) minmax(0, 1fr); gap: 2rem 2.5rem; align-items: center; }
+.bio-photo { margin: 0; }
+.bio-photo img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.bio-text { display: flex; flex-direction: column; gap: 1rem; min-width: 0; }
+.bio-text p { margin: 0; max-width: 36em; }
+@media (max-width: 700px) { .bio { grid-template-columns: minmax(0, 1fr); } .bio-photo { max-width: 340px; } }
 [hidden] { display: none !important; }
 @media (prefers-reduced-motion: reduce) { .key { transition: none; } }
+
+/* trends / masterpieces */
+.trend { position: relative; overflow: hidden; border-radius: 16px; background: linear-gradient(140deg, var(--hero-bg), var(--hero-bg2)); color: var(--hero-fg); padding: clamp(1.4rem, 4vw, 2.6rem); display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 1.8rem; align-items: center; }
+.trend-text { display: flex; flex-direction: column; gap: .8rem; min-width: 0; }
+.trend-text h2 { color: var(--hero-fg); display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .9rem; }
+.trend-text h2 .en { font-family: var(--f-display); font-size: .6em; letter-spacing: .08em; color: var(--hero-accent); direction: ltr; }
+.dia { color: var(--hero-accent); font-size: .8em; }
+.trend-text p { margin: 0; color: var(--hero-muted); }
+.trend-tag { align-self: flex-start; padding: .2rem .9rem; border-radius: 999px; background: var(--hero-accent); color: var(--hero-btn-fg); font-weight: 600; font-size: .9rem; }
+.trend-video { margin: 0; min-width: 0; }
+.trend-video video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: 10px; background: #000; }
+@media (max-width: 760px) { .trend { grid-template-columns: minmax(0, 1fr); } }
+
+/* reels: photos you swipe through */
+.reels-wrap { position: relative; }
+.reels { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding-block: .3rem .8rem; scrollbar-width: thin; -webkit-overflow-scrolling: touch; }
+.reel-card { position: relative; flex: 0 0 min(72vw, 250px); aspect-ratio: 9 / 14; scroll-snap-align: center; border: 0; padding: 0; border-radius: 18px; overflow: hidden; background: var(--line); cursor: zoom-in; }
+.reel-card img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.reel-card span { position: absolute; inset-inline: 0; bottom: 0; padding: 2.4rem .9rem .8rem; background: linear-gradient(transparent, rgba(12, 4, 8, .85)); color: #FFF3E6; font-size: .95rem; line-height: 1.5; text-align: start; }
+.reel-nav { display: flex; gap: .6rem; }
+.reel-nav button { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: var(--surface); color: var(--fg); font-size: 1.3rem; cursor: pointer; }
+.reel-nav button:hover { border-color: var(--accent); color: var(--accent); }
+.sec-top { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 1rem; }
+
+/* biography */
+.bio-story { display: flex; flex-direction: column; gap: 2.2rem; }
+.bio-story h3 { margin: 0 0 .5rem; font-family: var(--f-display); font-size: 1.35rem; color: var(--accent); }
+.bio-story p { margin: 0 0 .8rem; max-width: 40em; }
+.bio-chapter { border-inline-start: 3px solid var(--line); padding-inline-start: 1.2rem; }
+.bio-lead { display: grid; grid-template-columns: minmax(0, 300px) minmax(0, 1fr); gap: 2rem; align-items: center; }
+.bio-lead img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.bio-lead p { font-size: 1.12rem; }
+@media (max-width: 700px) { .bio-lead { grid-template-columns: minmax(0, 1fr); } }
+@media (prefers-reduced-motion: reduce) { .reels { scroll-behavior: auto; } }
 </style>
 
 <div class="wrap" dir="rtl" lang="ar">
@@ -232,6 +292,8 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
     <b>جورج مكرم</b>
     <nav aria-label="أقسام الصفحة">
       <a href="#highlights">أبرز الأعمال</a>
+      <a href="#trends">ترندات</a>
+      <a href="#bio">من هو جورج</a>
       <a href="#library">مكتبة الأعمال</a>
       <a href="#influences">تأثّري</a>
       <a href="#collab">تعاونات</a>
@@ -328,6 +390,10 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
         <div class="links"><a href="https://www.facebook.com/61566918103072/videos/1282941669708354/" target="_blank" rel="noopener">شاهد التحضيرات</a></div>
       </li>
       <li class="work">
+        <h3>مسرحية كش ملك</h3>
+        <p>موسيقى الأوبريت والمكساج: الموزع جورج مكرم، على مسرح المركز الكاثوليكي للسينما.</p>
+      </li>
+      <li class="work">
         <h3>تعاون مع الحجة نبيلة بلبلة</h3>
         <p>عزف معها في حفلات لايف في أكثر من مناسبة.</p>
         <div class="links">
@@ -336,6 +402,71 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
         </div>
       </li>
     </ul>
+  </section>
+
+  <section id="trends">
+    <div class="trend">
+      <div class="trend-text">
+        <span class="trend-tag"><span class="dia">&#9670;</span> مقطوعة نادرة</span>
+        <h2>ترندات <span class="en"><span class="dia">&#9670;</span> MASTERPIECES</span></h2>
+        <h3 style="margin:0;font-family:var(--f-display);font-size:1.6rem;">احتواء</h3>
+        <p>من أشهر مقطوعاتي، وفيها الكمان والبيانو في جو سينمائي هادي. دي لقطة منها، والمقطوعة كاملة على منصاتي.</p>
+        <a class="btn primary" href="#listen" style="align-self:flex-start;background:var(--hero-accent);color:var(--hero-btn-fg);border-color:var(--hero-accent)">اسمعها على المنصات</a>
+      </div>
+      <figure class="trend-video"><video controls playsinline preload="none" poster="img/ehtewaa.jpg" src="ehtewaa.mp4" aria-label="مقطع من مقطوعة احتواء">المتصفح لا يدعم تشغيل الفيديو.</video></figure>
+    </div>
+  </section>
+
+  <section id="reels">
+    <div class="sec-top">
+      <div class="sec-head"><h2>ريلز</h2><p>اسحب يمين وشمال، واضغط على أي صورة تكبّرها.</p></div>
+      <div class="reel-nav"><button type="button" id="reel-next" aria-label="التالي">&rsaquo;</button><button type="button" id="reel-prev" aria-label="السابق">&lsaquo;</button></div>
+    </div>
+    <div class="reels" id="reels-track">
+        <button type="button" class="reel-card" data-full="img/sobhy1.jpg" data-cap="مع الفنان محمد صبحي" aria-label="مع الفنان محمد صبحي"><img src="img/sobhy1.jpg" alt="مع الفنان محمد صبحي" style="object-position:55% 40%" loading="lazy"><span>مع الفنان محمد صبحي</span></button>
+        <button type="button" class="reel-card" data-full="img/shah.jpg" data-cap="مع الفنانة شاهيناز" aria-label="مع الفنانة شاهيناز"><img src="img/shah.jpg" alt="مع الفنانة شاهيناز" style="object-position:50% 50%" loading="lazy"><span>مع الفنانة شاهيناز</span></button>
+        <button type="button" class="reel-card" data-full="img/academy.jpg" data-cap="أكاديمية الفنون" aria-label="أكاديمية الفنون"><img src="img/academy.jpg" alt="أكاديمية الفنون" style="object-position:50% 30%" loading="lazy"><span>أكاديمية الفنون</span></button>
+        <button type="button" class="reel-card" data-full="img/sawy.jpg" data-cap="ساقية الصاوي" aria-label="ساقية الصاوي"><img src="img/sawy.jpg" alt="ساقية الصاوي" style="object-position:50% 70%" loading="lazy"><span>ساقية الصاوي</span></button>
+        <button type="button" class="reel-card" data-full="img/dream-tv.jpg" data-cap="صباح دريم" aria-label="صباح دريم"><img src="img/dream-tv.jpg" alt="صباح دريم" style="object-position:50% 40%" loading="lazy"><span>صباح دريم</span></button>
+        <button type="button" class="reel-card" data-full="img/october.jpg" data-cap="احتفالات أكتوبر" aria-label="احتفالات أكتوبر"><img src="img/october.jpg" alt="احتفالات أكتوبر" style="object-position:50% 50%" loading="lazy"><span>احتفالات أكتوبر</span></button>
+        <button type="button" class="reel-card" data-full="img/studio-benisuef.jpg" data-cap="في الأستوديو" aria-label="في الأستوديو"><img src="img/studio-benisuef.jpg" alt="في الأستوديو" style="object-position:50% 50%" loading="lazy"><span>في الأستوديو</span></button>
+        <button type="button" class="reel-card" data-full="img/sobhy2.jpg" data-cap="تحضير موسيقى مع صبحي" aria-label="تحضير موسيقى مع صبحي"><img src="img/sobhy2.jpg" alt="تحضير موسيقى مع صبحي" style="object-position:50% 28%" loading="lazy"><span>تحضير موسيقى مع صبحي</span></button>
+    </div>
+  </section>
+
+  <section id="bio">
+    <div class="sec-head"><h2>من هو الفنان جورج مكرم؟</h2></div>
+    <div class="bio-story">
+      <div class="bio-lead">
+        <img src="img/church-cairo.jpg" alt="جورج مكرم أمام مبنى كنسي أثري في القاهرة" loading="lazy">
+        <p>وُلد الفنان جورج مكرم في محافظة بني سويف عام 1988. لم يدرس الموسيقى دراسة أكاديمية، لكنه أحبها منذ صغره، وتعلّمها بأذنه وشغفه من أعمال الموسيقار عمر خيرت.</p>
+      </div>
+      <div class="bio-chapter">
+        <h3>البداية مع شريط كاسيت</h3>
+        <p>تأثر جورج بعمر خيرت وبحفلاته التي كانت تُذاع على التلفزيون المصري. وذات يوم أهداه أخوه الأكبر مينا شريطًا اسمه «لقاء آخر» لعمر خيرت، ومن هذا الشريط بدأ يتعلم الموسيقى.</p>
+        <p>صارت عادته أن يشتري شريط عمر خيرت كل سنة، منها «العرافة» و«العطور الساحرة» و«عم أحمد»، ثم جمع كل شرائطه، وسجّل حفلاته من التلفزيون المصري على شرائط الفيديو.</p>
+      </div>
+      <div class="bio-chapter">
+        <h3>الموسيقى الكنسية والدراسة</h3>
+        <p>اندمج في الموسيقى الكنسية، وقاد كورال ابتدائي كنيسة ماري مرقس ببني سويف. وشجعه الأستاذ جوزيف فايز قائد فريق «3 قديسين»، واكتشفه في الموسيقى الكنسية.</p>
+        <p>كان والده يعمل في الشرطة المصرية ووالدته مديرة مدرسة، ورغم ذلك اتجه إلى الفن. درس في كلية التربية قسم الفلسفة بجامعة القاهرة، ثم انتقل إلى جامعة بني سويف، وتخرج عام 2009. وتأثر بالدكتور مصطفى النشار وعدد من أساتذة علم الاجتماع.</p>
+      </div>
+      <div class="bio-chapter">
+        <h3>الانطلاق</h3>
+        <p>انطلق في مجال الموسيقى، وعزف في فندق سافوي بشرم الشيخ وكمبينسكي بالقاهرة، وأنشأ أول أستوديو صغير في بيته.</p>
+        <p>تعاون مع الفنان الكبير محمد صبحي، وتعامل معه كثيرًا وتبادلا الحديث في مدينة سنبل، وتركت هذه التجربة أثرًا كبيرًا في شخصيته. وفتح له هذا الباب للعمل مع الفنانة شاهيناز والحاجة نبيلة، بحكم تأثره بالموسيقى الشعبية المصرية الكلاسيكية.</p>
+        <p>ثم تعاون مع الفنان المصري أبو الليف، والفنان الخليجي محمد البدر، وفريق «نغم مصر» للفنان رفعت محمد، وكثير من الفنانين والفنانات.</p>
+      </div>
+      <div class="bio-chapter">
+        <h3>مدارسه وتأثراته</h3>
+        <p>تأثر بعمر خيرت وبول موريا (Paul Mauriat) وريتشارد كلايدرمان (Richard Clayderman)، وبكثير من فناني المدرسة الموسيقية المعاصرة. وفي الغناء تأثر بمدرسة «بي جيز» (Bee Gees) الإخوة جيب، وبفرقة «سيكريت جاردن» (Secret Garden)، وبكثير من الفنانين الغربيين والشرقيين.</p>
+        <p>يحب السينما ودرسها، وصنع كثيرًا من فيديوهات المونتاج بالذكاء الاصطناعي ومن اللقطات الحية.</p>
+      </div>
+      <div class="bio-chapter">
+        <h3>أعماله ورحلته مستمرة</h3>
+        <p>له مقطوعات مشهورة في السوق مثل «احتواء» و«Dreams &amp; Darkness» وغيرها. ولا يزال يدرس ويتعاون فنيًا، وأمله أن يقدم موسيقى تصويرية رائعة في الفترة القادمة.</p>
+      </div>
+    </div>
   </section>
 
   <section id="judy">
@@ -390,6 +521,7 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
         <h3 class="cat-title">أغاني رومانسية</h3>
         <ul class="works">
           <li class="work"><h3>بنلف</h3><p>من كلمات وألحان بليغ حمدي، توزيع جورج مكرم، بصوت نرمين أحمد «نيرما».</p><div class="links"><a href="https://www.youtube.com/watch?v=o5mzhj_l9mQ" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
+          <li class="work work-video"><div><h3>أغنية من إنتاج أستوديو بيانيست</h3><p>كليب بكلمات الأغنية على الشاشة، وفيه عبارة «Powered by Studio Pianist - Mr. George Makram».</p><video controls playsinline preload="none" poster="img/studio-song.jpg" src="studio-song.mp4" aria-label="كليب أغنية من إنتاج أستوديو بيانيست">المتصفح لا يدعم تشغيل الفيديو.</video></div></li>
           <li class="work"><h3>نرقص</h3><p>أغنية رومانسية.</p><div class="links"><a href="https://www.youtube.com/watch?v=MhSCc0Q4r9M" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
         </ul>
       </div>
@@ -423,6 +555,7 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
 
       <div class="cat" id="c-tv">
         <h3 class="cat-title">لقاءات تلفزيونية</h3>
+        <figure class="cat-photo"><img src="img/dream-tv.jpg" alt="جورج مكرم ضيف في برنامج صباح دريم" loading="lazy"><figcaption>في استوديو «صباح دريم».</figcaption></figure>
         <ul class="works">
           <li class="work"><h3>برنامج صباح دريم</h3><p>لقاء تلفزيوني.</p><div class="links"><a href="https://www.youtube.com/watch?v=P2ulSvWwcQs" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
           <li class="work"><h3>برنامج البداية</h3><p>لقاء تلفزيوني.</p><div class="links"><a href="https://www.youtube.com/watch?v=jOotaOkeS0Q" target="_blank" rel="noopener">افتح على يوتيوب</a></div></li>
@@ -516,36 +649,68 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
   <section id="photos">
     <div class="sec-head">
       <h2>لقطات</h2>
-      <p>من الحفلات واللقاءات.</p>
+      <p>من الحفلات والمسارح والأستوديو واللقاءات.</p>
     </div>
-    <div class="photos">
-      <figure>
-        <img src="img/sawy.jpg" alt="جورج مكرم على الكيبورد خلف مطربة على المسرح" loading="lazy">
-        <figcaption>حفلة ساقية الصاوي، عزف لايف خلف مطربة مصرية.</figcaption>
-      </figure>
-      <figure>
-        <img src="img/sobhy1.jpg" alt="جورج مكرم مع الفنان محمد صبحي في مكتبه" loading="lazy">
+    <div class="gallery">
+      <figure class="feature">
+        <button type="button" class="g-btn" data-full="img/sobhy1.jpg" data-cap="مع الفنان محمد صبحي في مكتبه بمدينة سنبل بعد عرض مسرحيته." aria-label="تكبير الصورة: مع الفنان محمد صبحي في مكتبه بمدينة سنبل بعد عرض مسرحيته."><img src="img/sobhy1.jpg" alt="جورج مكرم مع الفنان محمد صبحي في مكتبه" style="object-position:55% 40%" loading="lazy"></button>
         <figcaption>مع الفنان محمد صبحي في مكتبه بمدينة سنبل بعد عرض مسرحيته.</figcaption>
       </figure>
-      <figure>
-        <img src="img/sobhy2.jpg" alt="جورج مكرم مع الفنان محمد صبحي في أول لقاء لتحضير أعمال موسيقية" loading="lazy">
-        <figcaption>مع الفنان محمد صبحي في مكتبه بمدينة سنبل يوم 24-12-2023، اللقاء الأول لتحضير أعمال موسيقية للأستاذ محمد.</figcaption>
+      <figure class="feature">
+        <button type="button" class="g-btn" data-full="img/sobhy2.jpg" data-cap="مع الفنان محمد صبحي يوم 24-12-2023، اللقاء الأول لتحضير أعمال موسيقية للأستاذ محمد." aria-label="تكبير الصورة: مع الفنان محمد صبحي يوم 24-12-2023، اللقاء الأول لتحضير أعمال موسيقية للأستاذ محمد."><img src="img/sobhy2.jpg" alt="جورج مكرم مع الفنان محمد صبحي في أول لقاء لتحضير أعمال موسيقية" style="object-position:50% 28%" loading="lazy"></button>
+        <figcaption>مع الفنان محمد صبحي يوم 24-12-2023، اللقاء الأول لتحضير أعمال موسيقية للأستاذ محمد.</figcaption>
       </figure>
       <figure>
-        <img src="img/academy.jpg" alt="جورج مكرم بعد حفلة أكاديمية الفنون" loading="lazy">
+        <button type="button" class="g-btn" data-full="img/kosh-malik.jpg" data-cap="مسرحية «كش ملك»: اسمي في التتر، موسيقى الأوبريت والمكساج." aria-label="تكبير الصورة: مسرحية «كش ملك»: اسمي في التتر، موسيقى الأوبريت والمكساج."><img src="img/kosh-malik.jpg" alt="بوستر مسرحية كش ملك واسم جورج مكرم في التتر" style="object-position:50% 50%;object-fit:contain;background:#000" loading="lazy"></button>
+        <figcaption>مسرحية «كش ملك»: اسمي في التتر، موسيقى الأوبريت والمكساج.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/shah.jpg" data-cap="مع الفنانة شاهيناز في حفلة." aria-label="تكبير الصورة: مع الفنانة شاهيناز في حفلة."><img src="img/shah.jpg" alt="حفلة مع الفنانة شاهيناز" style="object-position:50% 50%" loading="lazy"></button>
+        <figcaption>مع الفنانة شاهيناز في حفلة.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/academy.jpg" data-cap="بعد حفلة أكاديمية الفنون في أكتوبر 2026، عازف البيانو مع أوركسترا الكمانجات." aria-label="تكبير الصورة: بعد حفلة أكاديمية الفنون في أكتوبر 2026، عازف البيانو مع أوركسترا الكمانجات."><img src="img/academy.jpg" alt="جورج مكرم بعد حفلة أكاديمية الفنون" style="object-position:50% 30%" loading="lazy"></button>
         <figcaption>بعد حفلة أكاديمية الفنون في أكتوبر 2026، عازف البيانو مع أوركسترا الكمانجات.</figcaption>
       </figure>
       <figure>
-        <img src="img/studio1.jpg" alt="جورج مكرم داخل الأستوديو" loading="lazy">
-        <figcaption>داخل الأستوديو.</figcaption>
+        <button type="button" class="g-btn" data-full="img/sawy.jpg" data-cap="حفلة ساقية الصاوي، عزف لايف خلف مطربة مصرية." aria-label="تكبير الصورة: حفلة ساقية الصاوي، عزف لايف خلف مطربة مصرية."><img src="img/sawy.jpg" alt="جورج مكرم على الكيبورد خلف مطربة على المسرح" style="object-position:50% 70%" loading="lazy"></button>
+        <figcaption>حفلة ساقية الصاوي، عزف لايف خلف مطربة مصرية.</figcaption>
       </figure>
       <figure>
-        <img src="img/studio2.jpg" alt="جورج مكرم في غرفة التحكم بالأستوديو" loading="lazy">
-        <figcaption>داخل الأستوديو.</figcaption>
+        <button type="button" class="g-btn" data-full="img/dream-tv.jpg" data-cap="ضيف في برنامج «صباح دريم» على قناة دريم." aria-label="تكبير الصورة: ضيف في برنامج «صباح دريم» على قناة دريم."><img src="img/dream-tv.jpg" alt="جورج مكرم ضيف في برنامج صباح دريم" style="object-position:50% 40%" loading="lazy"></button>
+        <figcaption>ضيف في برنامج «صباح دريم» على قناة دريم.</figcaption>
       </figure>
       <figure>
-        <img src="img/zamalek.jpg" alt="جورج مكرم أثناء تصويره في قناة نادي الزمالك" loading="lazy">
+        <button type="button" class="g-btn" data-full="img/zamalek.jpg" data-cap="أثناء تصويري في قناة نادي الزمالك." aria-label="تكبير الصورة: أثناء تصويري في قناة نادي الزمالك."><img src="img/zamalek.jpg" alt="جورج مكرم أثناء تصويره في قناة نادي الزمالك" style="object-position:40% 40%" loading="lazy"></button>
         <figcaption>أثناء تصويري في قناة نادي الزمالك.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/october.jpg" data-cap="عزف في احتفالات أكتوبر أمام الحاكم العسكري." aria-label="تكبير الصورة: عزف في احتفالات أكتوبر أمام الحاكم العسكري."><img src="img/october.jpg" alt="جورج مكرم يعزف مع فرقة في احتفالات أكتوبر" style="object-position:50% 50%" loading="lazy"></button>
+        <figcaption>عزف في احتفالات أكتوبر أمام الحاكم العسكري.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/tulip.jpg" data-cap="عزف في فندق توليب إن القوات المسلحة بمدينة نصر." aria-label="تكبير الصورة: عزف في فندق توليب إن القوات المسلحة بمدينة نصر."><img src="img/tulip.jpg" alt="جورج مكرم يعزف في فندق توليب إن" style="object-position:50% 40%" loading="lazy"></button>
+        <figcaption>عزف في فندق توليب إن القوات المسلحة بمدينة نصر.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/rubaa.jpg" data-cap="عزف في الربع الثقافي." aria-label="تكبير الصورة: عزف في الربع الثقافي."><img src="img/rubaa.jpg" alt="جورج مكرم يعزف على الكيبورد" style="object-position:50% 40%" loading="lazy"></button>
+        <figcaption>عزف في الربع الثقافي.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/church-alex.jpg" data-cap="عزف بيانو في كنيسة بالإسكندرية." aria-label="تكبير الصورة: عزف بيانو في كنيسة بالإسكندرية."><img src="img/church-alex.jpg" alt="جورج مكرم يعزف على البيانو في كنيسة" style="object-position:50% 12%" loading="lazy"></button>
+        <figcaption>عزف بيانو في كنيسة بالإسكندرية.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/studio-benisuef.jpg" data-cap="داخل الأستوديو الخاص بي في بني سويف." aria-label="تكبير الصورة: داخل الأستوديو الخاص بي في بني سويف."><img src="img/studio-benisuef.jpg" alt="جورج مكرم داخل الأستوديو في بني سويف" style="object-position:50% 50%" loading="lazy"></button>
+        <figcaption>داخل الأستوديو الخاص بي في بني سويف.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/studio1.jpg" data-cap="داخل الأستوديو." aria-label="تكبير الصورة: داخل الأستوديو."><img src="img/studio1.jpg" alt="جورج مكرم داخل الأستوديو" style="object-position:50% 40%" loading="lazy"></button>
+        <figcaption>داخل الأستوديو.</figcaption>
+      </figure>
+      <figure>
+        <button type="button" class="g-btn" data-full="img/studio2.jpg" data-cap="في غرفة التحكم." aria-label="تكبير الصورة: في غرفة التحكم."><img src="img/studio2.jpg" alt="جورج مكرم في غرفة التحكم بالأستوديو" style="object-position:50% 35%" loading="lazy"></button>
+        <figcaption>في غرفة التحكم.</figcaption>
       </figure>
     </div>
   </section>
@@ -595,9 +760,40 @@ footer { color: var(--muted); font-size: .9rem; border-top: 1px solid var(--line
   <footer>© جورج مكرم · Pianist Studio · George Makram, Egyptian composer and arranger</footer>
 </div>
 
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="عرض الصورة" hidden>
+  <button type="button" class="lb-close" id="lb-close" aria-label="إغلاق">&times;</button>
+  <img id="lb-img" alt="">
+  <p id="lb-cap"></p>
+</div>
+
 <script>
   // WhatsApp number in international format without plus or spaces.
   var WHATSAPP = "201554117867";
+  // fonts load after the page is drawn, so a slow connection never leaves a blank screen
+  (function () { var f = document.getElementById('gf'); if (f) f.media = 'all'; })();
+
+  (function () {
+    var t = document.getElementById('reels-track'); if (!t) return;
+    function step(d) { t.scrollBy({ left: d * (t.clientWidth * .8) * (document.dir === 'rtl' || getComputedStyle(t).direction === 'rtl' ? -1 : 1) }); }
+    document.getElementById('reel-next').addEventListener('click', function () { step(1); });
+    document.getElementById('reel-prev').addEventListener('click', function () { step(-1); });
+  })();
+
+  // click a gallery photo to see it whole
+  (function () {
+    var lb = document.getElementById('lb'), im = document.getElementById('lb-img'), cap = document.getElementById('lb-cap');
+    var last = null;
+    function close() { lb.hidden = true; im.removeAttribute('src'); if (last) last.focus(); }
+    document.querySelectorAll('.g-btn, .reel-card').forEach(function (b) {
+      b.addEventListener('click', function () {
+        last = b; im.src = b.getAttribute('data-full'); im.alt = b.getAttribute('data-cap') || '';
+        cap.textContent = b.getAttribute('data-cap') || ''; lb.hidden = false;
+        document.getElementById('lb-close').focus();
+      });
+    });
+    lb.addEventListener('click', function (e) { if (e.target !== im) close(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !lb.hidden) close(); });
+  })();
 
   (function () {
     if (WHATSAPP) {
